@@ -1,5 +1,6 @@
 os.loadAPI('/src/realtime/realtime')
 os.loadAPI('/src/lib/sha256')
+os.loadAPI('/src/lib/base64')
 local S3_KEY = fs.open('/etc/s3/key', 'r').readLine()
 local S3_SECRET = fs.open('/etc/s3/secret', 'r').readLine()
 
@@ -8,7 +9,7 @@ function uploadJson(payload, bucket, s3_path, s3_filename)
     local date = realtime.getUtcTime()
     local content_type = 'application/json'
     local string = 'PUT\n\n' .. content_type .. date .. 'x-amz-acl:public-read' .. bucket .. s3_path .. s3_filename
-    local signature = sha256.hmac(string, S3_SECRET)
+    local signature = base64.encode(sha256.hmacString(string, S3_SECRET))
     local headers = {
         [ "Host" ] = bucket .. '.s3.amazonaws.com',
         [ "Date" ] = date,

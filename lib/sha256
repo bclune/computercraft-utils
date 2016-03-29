@@ -162,6 +162,19 @@ function hashToBytes(hash)
 	return bytes
 end
 
+function stringToBytes(input)
+-- transform the input into a table of ints:
+	local output = {}
+	for i=1, #input do
+		output[i] = string.byte(input, i, i)
+	end
+	return output
+end
+
+function hmacString(input, key)
+    return hmac(stringToBytes(input), stringToBytes(key))
+end
+
 function hmac(input, key)
 	-- HMAC(H,K,m) = H( (K <xor> opad) .. H((K <xor> ipad) .. m))
 	-- Where:

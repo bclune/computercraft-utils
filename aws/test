@@ -1,3 +1,5 @@
 os.loadAPI('/src/aws/s3')
 
-s3.uploadJson('{"test":"true"', 'lowprioritycu.be', '/', 'test.json')
+response = s3.uploadJson('{"test":"true"', 'lowprioritycu.be', '/', 'test.json')
+
+print(response.readAll())

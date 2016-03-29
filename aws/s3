@@ -1,5 +1,5 @@
-os.loadAPI('/src/realtime/realtime.lua')
-os.loadAPI('/src/lib/sha256.lua')
+os.loadAPI('/src/realtime/realtime')
+os.loadAPI('/src/lib/sha256')
 local S3_KEY = fs.open('/etc/s3/key', 'r').readLine()
 local S3_SECRET = fs.open('/etc/s3/secret', 'r').readLine()
 

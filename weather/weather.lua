@@ -1,4 +1,4 @@
-os.loadAPI('/lib/json')
+os.loadAPI('../lib/json')
 monitor = peripheral.wrap('left')
 local forecast_url = 'https://api.forecast.io/forecast/'
 local lat = '44.475883'

@@ -8,7 +8,7 @@ function uploadJson(payload, bucket, s3_path, s3_filename)
     local uri = 'http://' .. bucket .. '.s3.amazonaws.com' .. s3_path .. s3_filename
     local date = realtime.getUtcTime()
     local content_type = 'application/json'
-    local string = 'PUT\n\n' .. content_type .. date .. 'x-amz-acl:public-read' .. bucket .. s3_path .. s3_filename
+    local string = 'PUT\n\n' .. content_type .. '\n' .. date .. '\n' .. 'x-amz-acl:public-read\n/' .. bucket .. s3_path .. s3_filename
     local signature = base64.encode(sha256.hmacString(string, S3_SECRET))
     local headers = {
         [ "Host" ] = bucket .. '.s3.amazonaws.com',

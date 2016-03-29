@@ -18,5 +18,5 @@ function uploadJson(payload, bucket, s3_path, s3_filename)
         [ "Authorization" ] = 'AWS ' .. S3_KEY .. ':' .. signature
     }
 
-    http.post(uri, payload, headers)
+    return http.post(uri, payload, headers)
 end

@@ -15,7 +15,7 @@ while true do
 
     monitor.clear()
     monitor.setCursorPos(1,1)
-    monitor.write('Burlington, VT)
+    monitor.write('Burlington, VT')
     monitor.setCursorPos(1,2)
     monitor.write(response.currently.summary .. ", ")
     monitor.write(response.currently.temperature .. ' F')
